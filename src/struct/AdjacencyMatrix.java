@@ -1,5 +1,7 @@
 package struct;
 
+import java.util.Arrays;
+
 public class AdjacencyMatrix {
 
 	private int row;
@@ -35,6 +37,25 @@ public class AdjacencyMatrix {
 	public void setMatrix(byte[][] matrix) {
 		this.matrix = matrix;
 	}
+	
+	public void insert(int i,int j,byte value){
+		matrix[i][j]=value;
+	}
+
+	
+	public String toString() {
+		int i,j;
+		String str="";
+		for(i=0;i<row;i++){
+			for(j=0;j<col;j++){
+				str=str+" "+matrix[i][j]+" ";
+			}
+			str=str+"\n";
+		}
+		
+		return str;
+	}
+	
 	
 	
 }
