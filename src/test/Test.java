@@ -15,6 +15,8 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
+			double c=Double.parseDouble(args[1]);
+			if(c<=0.0 || c>=1.00) throw new RuntimeException();
 			FileReader file= new FileReader(args[0]);
 			BufferedReader b= new BufferedReader(file);
 			String s=b.readLine();
@@ -24,11 +26,15 @@ public class Test {
 				calculator.initStructures(s);
 				s=b.readLine();
 			}
+			calculator.initScore(c);
 			//acquisizione info terminata
 			printInstance();
 			
 		}catch(IOException e) {e.getMessage();
-										 e.printStackTrace();}
+							  e.printStackTrace();}
+		catch(RuntimeException e) {e.getMessage();
+		  					      e.printStackTrace();}
+		
 	}
 	
 	public static void printInstance() {
@@ -41,6 +47,9 @@ public class Test {
 		System.out.println("----------SCORE----------\n");
 		System.out.println(calculator.toStringScore()+"\n");
 		System.out.println("----------SCORE----------\n");
+		System.out.println("----------COEFF----------\n");
+		System.out.println(calculator.toStringCoeff()+"\n");
+		System.out.println("----------COEFF----------\n");
 	}
 
 }

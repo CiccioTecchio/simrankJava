@@ -12,15 +12,30 @@ import struct.AdjacencyMatrix;
 public class SimCalculator {
 
 	private HashMap<String, Double> score;
+	private HashMap<String, Double> coeff;
 	private AdjacencyMatrix matrix;
 	private ArrayList<String> nomi;
 	
-	
 	public SimCalculator() {
 		this.score= new HashMap<String,Double>();
+		this.coeff= new HashMap<String,Double>();
 		this.nomi= new ArrayList<String>();
 		this.matrix=new AdjacencyMatrix();
+		
 	}
+	
+	public HashMap<String,Double> simScore(int iteration){
+		int it=0;
+		
+		while(it<iteration) {
+			
+		}
+		
+		return null;//per far star zitta l'IDE
+	}
+
+	
+	
 	
 	public void initStructures(String s) {
 		initNomi(s);
@@ -32,13 +47,28 @@ public class SimCalculator {
 		
 		initAdjacenzyMatrix(s);
 		
-		initScore();
-	}  
+		// in initScore è presente anche l'inizializzazione di coeff
+		
+	} 
 	
-	protected void initScore() {
+
+	
+	protected int checkIngresso(String a){
+		int index=nomi.indexOf(a);
+		//System.out.println("indexOf: String= "+a+" indice: "+index);
+		int size=nomi.size();
+		int i,num=0;
+		
+		for(i=0;i<size;i++) {
+			if(matrix.getElement(i,index)==1) num++;
+		}
+		return num;
+	}
+	public void initScore(double c) {
 		// ricorda g2 ha esattamente n^2 coppie quindi conta le ripetizioni
 		int size=nomi.size();
-		int i,j;
+		int i,j,inA,inB;
+		double coef;
 		String strI,strJ;
 		
 		for(i=0;i<size;i++) {
@@ -47,11 +77,13 @@ public class SimCalculator {
 				strJ=nomi.get(j);
 			if(!score.containsKey(strI+""+strJ)) {
 				score.put(strI+""+strJ, assignValue(strI, strJ));
+				inA=checkIngresso(strI);
+				inB=checkIngresso(strJ);
+				coef=c/(inA*inB);
+				coeff.put(strI+""+strJ, coef);
 			}	
 			}
-		}
-		
-		
+		}	
 	}
 	protected double assignValue(String a,String b) {
 		
@@ -124,11 +156,33 @@ public class SimCalculator {
 			if(i==5) {i=0;
 					  str+="\n";}
 			Map.Entry me = (Map.Entry)it.next();
-			str+=me.getKey()+": "+me.getValue()+"\t";
+			str+="\t"+me.getKey()+": "+me.getValue()+"\t";
 			i++;
 		}
 		return str;
 	}
 
+	public HashMap<String, Double> getCoeff() {
+		return coeff;
+	}
 
+	public void setCoeff(HashMap<String, Double> coeff) {
+		this.coeff = coeff;
+	}
+
+	public String toStringCoeff() {
+		Set entrySet=coeff.entrySet();
+		Iterator it= entrySet.iterator();
+		int i=0;
+		String str="";
+		while(it.hasNext()) {
+			if(i==5) {i=0;
+					  str+="\n";}
+			Map.Entry me = (Map.Entry)it.next();
+			str+="\t"+me.getKey()+": "+me.getValue()+"\t";
+			i++;
+		}
+		return str;
+	}
+	
 }

@@ -69,6 +69,9 @@ public class AdjacencyMatrix {
 		matrix[i][j]=value;
 	}
 
+	public int getElement(int r, int c) {
+		return matrix[r][c];
+	}
 	
 	public String toString() {
 		int i,j;
