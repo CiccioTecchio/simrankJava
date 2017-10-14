@@ -10,7 +10,7 @@ import struct.AdjacencyMatrix;
 public class SimCalculator {
 
 	private HashMap<String, Double> score;
-	private AdjacencyMatrix matrix;
+	private static AdjacencyMatrix matrix;
 	private ArrayList<String> nomi;
 	
 	
@@ -27,13 +27,21 @@ public class SimCalculator {
 		
 		matrix.setNumRow(n);
 		matrix.setNumCol(n);
-		//ArrayList<String> k= new ArrayList<>();
-		//k.addAll(nomi);
+		
+		initAdjacenzyMatrix(s);
+		System.out.println(matrix);
 	}  
 	
 	
+	protected void initAdjacenzyMatrix(String s) {
+		ArrayList <String>app= singleNode(s); 
+		int i=nomi.indexOf(app.get(0));
+		int j=nomi.indexOf(app.get(1));
+		matrix.insert(i, j, (byte)1);
+	}
 	
-	private ArrayList<String> singleNode(String s) {
+	
+	protected ArrayList<String> singleNode(String s) {
 		ArrayList<String> nodes= new ArrayList<String>();
 		char c=s.charAt(0);
 		
@@ -48,8 +56,7 @@ public class SimCalculator {
 		nodes.add(node2);
 		return nodes;
 	}
-	
-	private void initNomi(String s) {
+	protected void initNomi(String s) {
 		ArrayList<String> nodes= new ArrayList<String>();
 		nodes=singleNode(s);
 		

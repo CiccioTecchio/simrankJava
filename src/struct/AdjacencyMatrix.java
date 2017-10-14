@@ -7,16 +7,37 @@ public class AdjacencyMatrix {
 	private int row;
 	private int col;
 	private byte matrix[][] ;
-	
+	private static final int N=5;
+	private static final int M=5;
 	public AdjacencyMatrix(int row,int col) {
 		this.row=row;
 		this.col=col;
 		matrix= new byte [this.row][this.col];
+		init(row,col);
 	}
 	
+	protected void init() {
+		int r,c;
+		for(r=0;r<N;r++) {
+			for(c=0;c<M;c++) {
+				insert(r, c,(byte)0);
+			}
+		}		
+	}
 	
+	protected void init(int row,int col) {
+		int r,c;
+		for(r=0;r<N;r++) {
+			for(c=0;c<M;c++) {
+				insert(r, c,(byte)0);
+			}
+		}		
+	}
 
-	public AdjacencyMatrix() {}
+	public AdjacencyMatrix() {
+		matrix= new byte [N][M];
+		init();
+	}
 
 
 
