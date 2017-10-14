@@ -13,6 +13,12 @@ public class AdjacencyMatrix {
 		this.col=col;
 		matrix= new byte [this.row][this.col];
 	}
+	
+	
+
+	public AdjacencyMatrix() {}
+
+
 
 	public int getNumRow() {
 		return row;

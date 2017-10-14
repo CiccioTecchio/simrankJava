@@ -11,16 +11,24 @@ public class SimCalculator {
 
 	private HashMap<String, Double> score;
 	private AdjacencyMatrix matrix;
-	private Set<String> nomi;
+	private ArrayList<String> nomi;
 	
 	
 	public SimCalculator() {
 		this.score= new HashMap<String,Double>();
-		this.nomi= new HashSet<String>();
+		this.nomi= new ArrayList<String>();
+		this.matrix=new AdjacencyMatrix();
 	}
 	
 	public void initStructures(String s) {
 		initNomi(s);
+		
+		int n=nomi.size();//la matrice è quadrata;
+		
+		matrix.setNumRow(n);
+		matrix.setNumCol(n);
+		//ArrayList<String> k= new ArrayList<>();
+		//k.addAll(nomi);
 	}  
 	
 	
