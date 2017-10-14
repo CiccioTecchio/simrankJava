@@ -3,6 +3,8 @@ package calculator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 import struct.AdjacencyMatrix;
@@ -10,7 +12,7 @@ import struct.AdjacencyMatrix;
 public class SimCalculator {
 
 	private HashMap<String, Double> score;
-	private static AdjacencyMatrix matrix;
+	private AdjacencyMatrix matrix;
 	private ArrayList<String> nomi;
 	
 	
@@ -29,18 +31,38 @@ public class SimCalculator {
 		matrix.setNumCol(n);
 		
 		initAdjacenzyMatrix(s);
-		System.out.println(matrix);
+		
+		initScore();
 	}  
 	
-	
+	protected void initScore() {
+		// ricorda g2 ha esattamente n^2 coppie quindi conta le ripetizioni
+		int size=nomi.size();
+		int i,j;
+		String strI,strJ;
+		
+		for(i=0;i<size;i++) {
+			for(j=0;j<size;j++) {
+				strI=nomi.get(i);
+				strJ=nomi.get(j);
+			if(!score.containsKey(strI+""+strJ)) {
+				score.put(strI+""+strJ, assignValue(strI, strJ));
+			}	
+			}
+		}
+		
+		
+	}
+	protected double assignValue(String a,String b) {
+		
+		if(a.equals(b)) return 1; else return 0;
+	}
 	protected void initAdjacenzyMatrix(String s) {
 		ArrayList <String>app= singleNode(s); 
 		int i=nomi.indexOf(app.get(0));
 		int j=nomi.indexOf(app.get(1));
 		matrix.insert(i, j, (byte)1);
 	}
-	
-	
 	protected ArrayList<String> singleNode(String s) {
 		ArrayList<String> nodes= new ArrayList<String>();
 		char c=s.charAt(0);
@@ -68,4 +90,45 @@ public class SimCalculator {
 			nomi.add(nodes.get(1));
 		}
 	}
+
+	public HashMap<String, Double> getScore() {
+		return score;
+	}
+
+	public void setScore(HashMap<String, Double> score) {
+		this.score = score;
+	}
+
+	public AdjacencyMatrix getMatrix() {
+		return matrix;
+	}
+
+	public void setMatrix(AdjacencyMatrix matrix) {
+		this.matrix = matrix;
+	}
+
+	public ArrayList<String> getNomi() {
+		return nomi;
+	}
+
+	public void setNomi(ArrayList<String> nomi) {
+		this.nomi = nomi;
+	}
+
+	public String toStringScore() {
+		Set entrySet=score.entrySet();
+		Iterator it= entrySet.iterator();
+		int i=0;
+		String str="";
+		while(it.hasNext()) {
+			if(i==5) {i=0;
+					  str+="\n";}
+			Map.Entry me = (Map.Entry)it.next();
+			str+=me.getKey()+": "+me.getValue()+"\t";
+			i++;
+		}
+		return str;
+	}
+
+
 }
