@@ -14,6 +14,7 @@ public class Test {
 	
 	private static SimCalculator calculator;
 	private static HashMap<String,Double> score;
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		

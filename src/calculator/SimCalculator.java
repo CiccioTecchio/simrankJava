@@ -31,7 +31,6 @@ public class SimCalculator {
 		ArrayList<Integer>indicesA,indicesB;
 		double simScore=0;
 		double sumScore=0;
-		int indexA,indexB;
 		//app mappa di appoggio che contiene gli score calcolati all'iterazione precedente
 		
 		
@@ -104,6 +103,7 @@ public class SimCalculator {
 		// in initScore è presente anche l'inizializzazione di coeff
 		
 	} 
+	
 	protected int checkIngresso(String a){
 		int index=nomi.indexOf(a);
 		int size=nomi.size();
@@ -113,6 +113,7 @@ public class SimCalculator {
 		}
 		return num;
 	}
+	
 	public void initScore(double c) {
 		int size=nomi.size();
 		int i,j,inA,inB;
@@ -133,10 +134,12 @@ public class SimCalculator {
 			}
 		}	
 	}
+	
 	protected double assignValue(String a,String b) {
 		
 		if(a.equals(b)) return 1; else return 0;
 	}
+	
 	protected void initAdjacenzyMatrix(String s) {
 		ArrayList <String>app= singleNode(s); 
 		int i=nomi.indexOf(app.get(0));
@@ -158,6 +161,7 @@ public class SimCalculator {
 		nodes.add(node2);
 		return nodes;
 	}
+	
 	protected void initNomi(String s) {
 		ArrayList<String> nodes= new ArrayList<String>();
 		nodes=singleNode(s);
@@ -170,33 +174,38 @@ public class SimCalculator {
 			nomi.add(nodes.get(1));
 		}
 	}
+	
 	public HashMap<String, Double> getScore() {
 		return score;
 	}
+	
 	public void setScore(HashMap<String, Double> score) {
 		this.score = score;
 	}
+	
 	public AdjacencyMatrix getMatrix() {
 		return matrix;
 	}
+	
 	public void setMatrix(AdjacencyMatrix matrix) {
 		this.matrix = matrix;
 	}
+	
 	public ArrayList<String> getNomi() {
 		return nomi;
 	}
+	
 	public void setNomi(ArrayList<String> nomi) {
 		this.nomi = nomi;
 	}
-
+	
 	public HashMap<String, Double> getCoeff() {
 		return coeff;
 	}
+	
 	public void setCoeff(HashMap coeff) {
 		this.coeff = coeff;
 	}
-	
-
 	
 	public String toStringMap(HashMap<String,Double> map) {
 		Set entrySet=map.entrySet();
