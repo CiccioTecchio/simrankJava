@@ -3,6 +3,7 @@ package test;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
@@ -32,9 +33,13 @@ public class Test {
 			//acquisizione info terminata
 			//gli stessi risultati del paper di Windom,Jeh si trovano con 7 iterazioni
 			int numIter=Integer.parseInt(args[2]);
-			score=calculator.simScore(7);
 			printInstance();
-	
+			score=calculator.simScore(7);
+			System.out.println("----------SCORE FINALI----------\n");
+			System.out.println(calculator.toStringMap(score)+"\n");
+			System.out.println("----------SCORE FINALI----------\n");
+			
+			
 		}catch(IOException e) {e.getMessage();
 							  e.printStackTrace();}
 		catch(RuntimeException e) {e.getMessage();
@@ -55,9 +60,7 @@ public class Test {
 		System.out.println("----------COEFF----------\n");
 		System.out.println(calculator.toStringMap(calculator.getCoeff())+"\n");
 		System.out.println("----------COEFF----------\n");
-		System.out.println("----------SCORE FINALI----------\n");
-		System.out.println(calculator.toStringMap(score)+"\n");
-		System.out.println("----------SCORE FINALI----------\n");
+		
 	}
 
 }

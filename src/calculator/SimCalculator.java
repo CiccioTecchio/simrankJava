@@ -20,7 +20,6 @@ public class SimCalculator {
 		this.coeff= new HashMap<String,Double>();
 		this.nomi= new ArrayList<String>();
 		this.matrix=new AdjacencyMatrix();
-		
 	}
 	
 	//converge verso la quinta iterazione
@@ -60,12 +59,10 @@ public class SimCalculator {
 				
 				for(i=0;i<inA;i++) {
 					for(j=0;j<inB;j++) {
-						System.out.println(nomi.get(indicesA.get(i))+","+nomi.get(indicesB.get(j)));
 						sumScore+=app.get(nomi.get(indicesA.get(i))+","+nomi.get(indicesB.get(j)));
 					
 					}
 				}
-				System.out.println("BREAK");
 				simScore=coeff.get(key)*sumScore;
 				score.put(key, simScore);
 				
@@ -74,9 +71,7 @@ public class SimCalculator {
 				}//fine else
 				
 			}//fine iterator map
-			
-			
-			
+				
 			it++;
 		}
 		
