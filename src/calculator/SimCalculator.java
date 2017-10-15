@@ -25,12 +25,39 @@ public class SimCalculator {
 	
 	//converge verso la quinta iterazione
 	public HashMap<String, Double> simScore(int iteration){
-		int i,j,it=0;
-		
-		HashMap<String,Double> app=score;
+		int i,j,inA,inB,it=0;
+		String key,a,b;
+		HashMap<String,Double> app;
+		ArrayList<String> pair;
+		double simScore=0;
+		double sumScore=0;
+		int indexA,indexB;
 		//app mappa di appoggio che contiene gli score calcolati all'iterazione precedente
+		Set entrySet=coeff.entrySet();
+		Iterator iterator= entrySet.iterator();
 		while(it<iteration) {
-			
+			app=score;
+			while(iterator.hasNext()) {
+				Map.Entry me = (Map.Entry)iterator.next();
+				key=""+me.getKey();
+				
+				pair=singleNode(key);
+				
+				simScore=coeff.get(key);
+				inA=checkIngresso(pair.get(0));
+				inB=checkIngresso(pair.get(1));
+				indexA=nomi.indexOf(pair.get(0));
+				indexB=nomi.indexOf(pair.get(1));
+				
+				for(i=0;i<inA;i++) {
+					for(j=0;j<inB;j++) {
+						
+					}
+				}
+				simScore=simScore*sumScore;
+				score.put(key, simScore);
+				
+			}
 			
 			
 			it++;
@@ -74,12 +101,12 @@ public class SimCalculator {
 			for(j=0;j<size;j++) {
 				strI=nomi.get(i);
 				strJ=nomi.get(j);
-			if(!score.containsKey(strI+""+strJ)) {
-				score.put(strI+""+strJ, assignValue(strI, strJ));
+			if(!score.containsKey(strI+","+strJ)) {
+				score.put(strI+","+strJ, assignValue(strI, strJ));
 				inA=checkIngresso(strI);
 				inB=checkIngresso(strJ);
 				coef=c/(inA*inB);
-				coeff.put(strI+""+strJ, coef);
+				coeff.put(strI+","+strJ, coef);
 			}	
 			}
 		}	
@@ -94,6 +121,7 @@ public class SimCalculator {
 		int j=nomi.indexOf(app.get(1));
 		matrix.insert(i, j, (byte)1);
 	}
+	
 	protected ArrayList<String> singleNode(String s) {
 		ArrayList<String> nodes= new ArrayList<String>();
 		char c=s.charAt(0);
@@ -138,28 +166,18 @@ public class SimCalculator {
 	public void setNomi(ArrayList<String> nomi) {
 		this.nomi = nomi;
 	}
-	public String toStringScore() {
-		Set entrySet=score.entrySet();
-		Iterator it= entrySet.iterator();
-		int i=0;
-		String str="";
-		while(it.hasNext()) {
-			if(i==5) {i=0;
-					  str+="\n";}
-			Map.Entry me = (Map.Entry)it.next();
-			str+="\t"+me.getKey()+": "+me.getValue()+"\t";
-			i++;
-		}
-		return str;
-	}
+
 	public HashMap<String, Double> getCoeff() {
 		return coeff;
 	}
 	public void setCoeff(HashMap coeff) {
 		this.coeff = coeff;
 	}
-	public String toStringCoeff() {
-		Set entrySet=coeff.entrySet();
+	
+
+	
+	public String toStringMap(HashMap<String,Double> map) {
+		Set entrySet=map.entrySet();
 		Iterator it= entrySet.iterator();
 		int i=0;
 		String str="";

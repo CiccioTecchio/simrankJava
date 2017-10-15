@@ -5,15 +5,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 
 import calculator.SimCalculator;
 
 public class Test {
 	
 	private static SimCalculator calculator;
-	
+	private static HashMap<String,Double> score;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
 		try {
 			double c=Double.parseDouble(args[1]);
 			if(c<=0.0 || c>=1.00) throw new RuntimeException();
@@ -28,7 +30,9 @@ public class Test {
 			}
 			calculator.initScore(c);
 			//acquisizione info terminata
+			score=calculator.simScore(5);
 			printInstance();
+			
 			
 		}catch(IOException e) {e.getMessage();
 							  e.printStackTrace();}
@@ -44,12 +48,15 @@ public class Test {
 		System.out.println("----------MATRICE DI ADIACENZA----------\n");
 		System.out.println(calculator.getMatrix());
 		System.out.println("----------MATRICE DI ADIACENZA----------\n");
-		System.out.println("----------SCORE----------\n");
-		System.out.println(calculator.toStringScore()+"\n");
-		System.out.println("----------SCORE----------\n");
+		System.out.println("----------SCORE INIZIALI----------\n");
+		System.out.println(calculator.toStringMap(calculator.getScore())+"\n");
+		System.out.println("----------SCORE INIZIALI----------\n");
 		System.out.println("----------COEFF----------\n");
-		System.out.println(calculator.toStringCoeff()+"\n");
+		System.out.println(calculator.toStringMap(calculator.getCoeff())+"\n");
 		System.out.println("----------COEFF----------\n");
+		System.out.println("----------SCORE FINALI----------\n");
+		System.out.println(calculator.toStringMap(score)+"\n");
+		System.out.println("----------SCORE FINALI----------\n");
 	}
 
 }
