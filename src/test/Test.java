@@ -30,10 +30,11 @@ public class Test {
 			}
 			calculator.initScore(c);
 			//acquisizione info terminata
-			score=calculator.simScore(5);
+			//gli stessi risultati del paper di Windom,Jeh si trovano con 7 iterazioni
+			int numIter=Integer.parseInt(args[2]);
+			score=calculator.simScore(7);
 			printInstance();
-			
-			
+	
 		}catch(IOException e) {e.getMessage();
 							  e.printStackTrace();}
 		catch(RuntimeException e) {e.getMessage();

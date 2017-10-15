@@ -29,35 +29,52 @@ public class SimCalculator {
 		String key,a,b;
 		HashMap<String,Double> app;
 		ArrayList<String> pair;
+		ArrayList<Integer>indicesA,indicesB;
 		double simScore=0;
 		double sumScore=0;
 		int indexA,indexB;
 		//app mappa di appoggio che contiene gli score calcolati all'iterazione precedente
-		Set entrySet=coeff.entrySet();
-		Iterator iterator= entrySet.iterator();
+		
+		
 		while(it<iteration) {
 			app=score;
+			Set entrySet=app.entrySet();
+			Iterator iterator= entrySet.iterator();
 			while(iterator.hasNext()) {
 				Map.Entry me = (Map.Entry)iterator.next();
 				key=""+me.getKey();
 				
 				pair=singleNode(key);
 				
-				simScore=coeff.get(key);
-				inA=checkIngresso(pair.get(0));
-				inB=checkIngresso(pair.get(1));
-				indexA=nomi.indexOf(pair.get(0));
-				indexB=nomi.indexOf(pair.get(1));
+				
+				
+				a=pair.get(0);
+				b=pair.get(1);
+				if(a.equals(b)) score.put(key, 1.0);
+				
+				else {
+					indicesA=indexIn(a);
+					indicesB=indexIn(b);
+					inA=indicesA.size();
+					inB=indicesB.size();
 				
 				for(i=0;i<inA;i++) {
 					for(j=0;j<inB;j++) {
-						
+						System.out.println(nomi.get(indicesA.get(i))+","+nomi.get(indicesB.get(j)));
+						sumScore+=app.get(nomi.get(indicesA.get(i))+","+nomi.get(indicesB.get(j)));
+					
 					}
 				}
-				simScore=simScore*sumScore;
+				System.out.println("BREAK");
+				simScore=coeff.get(key)*sumScore;
 				score.put(key, simScore);
 				
-			}
+				simScore=0;
+				sumScore=0;
+				}//fine else
+				
+			}//fine iterator map
+			
 			
 			
 			it++;
@@ -67,7 +84,17 @@ public class SimCalculator {
 	}
 
 	
-	
+	public ArrayList<Integer> indexIn(String a){
+		ArrayList<Integer> index=new ArrayList<>();
+		
+		int col= nomi.indexOf(a);
+		int size=nomi.size();
+		int i,j;
+		for( i=0;i<size;i++) {
+			if(matrix.getElement(i, col)==1) index.add(i);
+		}
+		return index;
+	}
 	
 	public void initStructures(String s) {
 		initNomi(s);
@@ -185,7 +212,8 @@ public class SimCalculator {
 			if(i==5) {i=0;
 					  str+="\n";}
 			Map.Entry me = (Map.Entry)it.next();
-			str+="\t"+me.getKey()+": "+me.getValue()+"\t";
+			String troncato= String.format ("%.3f", me.getValue()); 
+			str+="\t"+me.getKey()+": "+troncato+"\t";
 			i++;
 		}
 		return str;
