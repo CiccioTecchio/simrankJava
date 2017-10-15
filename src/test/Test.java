@@ -33,8 +33,9 @@ public class Test {
 			//acquisizione info terminata
 			//gli stessi risultati del paper di Windom,Jeh si trovano con 7 iterazioni
 			int numIter=Integer.parseInt(args[2]);
+			if(numIter<=0) throw new RuntimeException();
 			printInstance();
-			score=calculator.simScore(7);
+			score=calculator.simScore(numIter);
 			System.out.println("----------SCORE FINALI----------\n");
 			System.out.println(calculator.toStringMap(score)+"\n");
 			System.out.println("----------SCORE FINALI----------\n");
