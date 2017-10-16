@@ -23,7 +23,6 @@ public class AdjacencyMatrix {
 	
 	public byte getElement(int r,int c) {
 		String key=r+","+c;
-		//if (!matrix.containsKey(key)) {System.out.println("TEST");}
 		return matrix.get(key);
 	}
 	

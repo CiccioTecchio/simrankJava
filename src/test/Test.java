@@ -5,11 +5,12 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import calculator.SimCalculator;
+import struct.ScoreTable;
 
 public class Test {
 	
 	private static SimCalculator calculator;
-	private static HashMap<String,Double> score;
+	private static ScoreTable score;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -35,7 +36,7 @@ public class Test {
 			printInstance();
 			score=calculator.simScore(numIter);
 			System.out.println("----------SCORE FINALI----------\n");
-			System.out.println(calculator.toStringMap(score)+"\n");
+			System.out.println(calculator.getScore()+"\n");
 			System.out.println("----------SCORE FINALI----------\n");
 			
 			
@@ -51,13 +52,13 @@ public class Test {
 		System.out.println(calculator.getNomi()+"\n");
 		System.out.println("----------NOMI----------\n");
 		System.out.println("----------MATRICE DI ADIACENZA----------\n");
-		System.out.println(calculator.toStringMatrix()+"\n");
+		System.out.println(calculator.getMatrix()+"\n");
 		System.out.println("----------MATRICE DI ADIACENZA----------\n");
 		System.out.println("----------SCORE INIZIALI----------\n");
-		System.out.println(calculator.toStringMap(calculator.getScore())+"\n");
+		System.out.println(calculator.getScore()+"\n");
 		System.out.println("----------SCORE INIZIALI----------\n");
 		System.out.println("----------COEFF----------\n");
-		System.out.println(calculator.toStringMap(calculator.getCoeff())+"\n");
+		System.out.println(calculator.getCoeff()+"\n");
 		System.out.println("----------COEFF----------\n");
 		
 	}

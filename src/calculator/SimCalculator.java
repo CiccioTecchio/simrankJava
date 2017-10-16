@@ -8,25 +8,25 @@ import java.util.Set;
 
 
 import struct.AdjacencyMatrix;
+import struct.ScoreTable;
 
 public class SimCalculator {
-
-	private HashMap<String, Double> score;
-	private HashMap<String, Double> coeff;
-	//private AdjacencyMatrix matrix;
+	
+	private ScoreTable score;
+	private ScoreTable coeff;
 	private ArrayList<String> nomi;
-	private AdjacencyMatrix dynamic; 
+	private AdjacencyMatrix matrix; 
 	
 	public SimCalculator() {
-		this.score= new HashMap<String,Double>();
-		this.coeff= new HashMap<String,Double>();
+		
+		this.score= new ScoreTable();
+		this.coeff= new ScoreTable();
 		this.nomi= new ArrayList<String>();
-		//this.matrix=new AdjacencyMatrix();
-		dynamic=new AdjacencyMatrix();
+		this.matrix=new AdjacencyMatrix();
 	}
 	
 	//converge verso la quinta iterazione
-	public HashMap<String, Double> simScore(int iteration){
+	public ScoreTable simScore(int iteration){
 		int i,j,inA,inB,it=0;
 		String key,a,b;
 		HashMap<String,Double> app;
@@ -88,8 +88,7 @@ public class SimCalculator {
 		int size=nomi.size();
 		int i,j;
 		for( i=0;i<size;i++) {
-			//if(matrix.getElement(i, col)==1) index.add(i);
-			if(dynamic.getElement(i, col)==1)index.add(i);
+			if(matrix.getElement(i, col)==1)index.add(i);
 		}
 		return index;
 	}
@@ -107,7 +106,7 @@ public class SimCalculator {
 		int size=nomi.size();
 		for(i=0;i<size;i++) {
 			for(j=0;j<size;j++) {
-				if(!dynamic.containsIndex(i, j)) dynamic.addElement(i, j,(byte) 0);
+				if(!matrix.containsIndex(i, j)) matrix.addElement(i, j,(byte) 0);
 			}
 		}
 	}
@@ -117,7 +116,7 @@ public class SimCalculator {
 		int size=nomi.size();
 		int i,num=0;
 		for(i=0;i<size;i++) {
-			if(dynamic.getElement(i, index)==1)num++;
+			if(matrix.getElement(i, index)==1)num++;
 		}
 		return num;
 	}
@@ -132,19 +131,18 @@ public class SimCalculator {
 			for(j=0;j<size;j++) {
 				strI=nomi.get(i);
 				strJ=nomi.get(j);
-			if(!score.containsKey(strI+","+strJ)) {
+				if(!score.containsKey(strI+","+strJ)) {
 				score.put(strI+","+strJ, assignValue(strI, strJ));
 				inA=checkIngresso(strI);
 				inB=checkIngresso(strJ);
 				coef=c/(inA*inB);
 				coeff.put(strI+","+strJ, coef);
-			}	
+				}	
 			}
 		}	
 	}
 	
-	protected double assignValue(String a,String b) {
-		
+	protected double assignValue(String a,String b) {	
 		if(a.equals(b)) return 1; else return 0;
 	}
 	
@@ -152,7 +150,7 @@ public class SimCalculator {
 		String[]app= singleNode(s); 
 		int i=nomi.indexOf(app[0]);
 		int j=nomi.indexOf(app[1]);
-		dynamic.addElement(i, j, (byte)1);
+		matrix.addElement(i, j, (byte)1);
 	}
 	
 	protected String[] singleNode(String s) {
@@ -174,21 +172,21 @@ public class SimCalculator {
 		}
 	}
 	
-	public HashMap<String, Double> getScore() {
+	public ScoreTable getScore() {
 		return score;
 	}
 	
-	public void setScore(HashMap<String, Double> score) {
+	public void setScore(ScoreTable score) {
 		this.score = score;
 	}
 	
-//	public AdjacencyMatrix getMatrix() {
-//		return matrix;
-//	}
-//	
-//	public void setMatrix(AdjacencyMatrix matrix) {
-//		this.matrix = matrix;
-//	}
+	public AdjacencyMatrix getMatrix() {
+		return matrix;
+	}
+	
+	public void setMatrix(AdjacencyMatrix matrix) {
+		this.matrix = matrix;
+	}
 	
 	public ArrayList<String> getNomi() {
 		return nomi;
@@ -198,32 +196,13 @@ public class SimCalculator {
 		this.nomi = nomi;
 	}
 	
-	public HashMap<String, Double> getCoeff() {
+	public ScoreTable getCoeff() {
 		return coeff;
 	}
 	
-	public void setCoeff(HashMap coeff) {
+	public void setCoeff(ScoreTable coeff) {
 		this.coeff = coeff;
 	}
 	
-	public String toStringMap(HashMap<String,Double> map) {
-		Set entrySet=map.entrySet();
-		Iterator it= entrySet.iterator();
-		int i=0;
-		String str="";
-		while(it.hasNext()) {
-			if(i==5) {i=0;
-					  str+="\n";}
-			Map.Entry me = (Map.Entry)it.next();
-			String troncato= String.format ("%.3f", me.getValue()); 
-			str+="\t"+me.getKey()+": "+troncato+"\t";
-			i++;
-		}
-		return str;
-	}
-	
-	public String toStringMatrix() {
-		return dynamic.toString();
-	}
 	
 }
