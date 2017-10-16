@@ -43,13 +43,8 @@ public class AdjacencyMatrix {
 				str+="\t"+value+"\t";
 			
 			}
-		}
-		
-		
+		}		
 		return str;
-		
-		
-		
 	}
 	
 	

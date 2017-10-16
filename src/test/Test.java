@@ -33,10 +33,11 @@ public class Test {
 			//gli stessi risultati del paper di Windom,Jeh si trovano con 7 iterazioni
 			int numIter=Integer.parseInt(args[2]);
 			if(numIter<=0) throw new RuntimeException();
-			printInstance(calculator.getNomi().size());
+			int size=calculator.getNomi().size();
+			printInstance(size);
 			score=calculator.simScore(numIter);
 			System.out.println("----------SCORE FINALI----------\n");
-			System.out.println(calculator.getScore()+"\n");
+			System.out.println(calculator.getScore().toString(size)+"\n");
 			System.out.println("----------SCORE FINALI----------\n");
 			
 			
@@ -55,10 +56,10 @@ public class Test {
 		System.out.println(calculator.getMatrix().toString(sizeCol)+"\n");
 		System.out.println("----------MATRICE DI ADIACENZA----------\n");
 		System.out.println("----------SCORE INIZIALI----------\n");
-		System.out.println(calculator.getScore()+"\n");
+		System.out.println(calculator.getScore().toString(sizeCol)+"\n");
 		System.out.println("----------SCORE INIZIALI----------\n");
 		System.out.println("----------COEFF----------\n");
-		System.out.println(calculator.getCoeff()+"\n");
+		System.out.println(calculator.getCoeff().toString(sizeCol)+"\n");
 		System.out.println("----------COEFF----------\n");
 		
 	}

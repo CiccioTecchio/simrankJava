@@ -11,14 +11,14 @@ public class ScoreTable extends HashMap<String, Double>{
 		super();
 	}
 	
-	@Override
-	public String toString() {
+	
+	public String toString(int sizeCol) {
 		Set entrySet=this.entrySet();
 		Iterator it= entrySet.iterator();
 		int i=0;
 		String str="";
 		while(it.hasNext()) {
-			if(i==5) {i=0;
+			if(i==sizeCol) {i=0;
 					  str+="\n";}
 			Map.Entry me = (Map.Entry)it.next();
 			String troncato= String.format ("%.3f", me.getValue()); 
