@@ -67,7 +67,7 @@ public class SimCalculator {
 				}
 				simScore=coeff.get(key)*sumScore;
 				score.put(key, simScore);
-				
+				score.put(b+","+a, simScore);
 				simScore=0;
 				sumScore=0;
 				}//fine else
