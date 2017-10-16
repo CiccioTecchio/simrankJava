@@ -1,6 +1,5 @@
 package struct;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -43,8 +42,7 @@ public class DynamicAdjacencyMatrix {
 		while(it.hasNext()) {
 			if(i==5) {i=0;
 					  str+="\n";}
-			Map.Entry me = (Map.Entry)it.next();
-			//String troncato= String.format ("%.3f", me.getValue()); 
+			Map.Entry me = (Map.Entry)it.next(); 
 			str+=me.getValue()+"\t";
 			i++;
 		}

@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import struct.AdjacencyMatrix;
+
 import struct.DynamicAdjacencyMatrix;
 
 public class DynamicSimCalculator {
