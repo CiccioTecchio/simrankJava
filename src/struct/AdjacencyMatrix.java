@@ -5,11 +5,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class DynamicAdjacencyMatrix {
+public class AdjacencyMatrix {
 
 	private HashMap<String,Byte>matrix;
 	
-	public DynamicAdjacencyMatrix() {
+	public AdjacencyMatrix() {
 		matrix=new HashMap<String,Byte>();
 	}
 	

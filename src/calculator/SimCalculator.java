@@ -7,22 +7,22 @@ import java.util.Map;
 import java.util.Set;
 
 
-import struct.DynamicAdjacencyMatrix;
+import struct.AdjacencyMatrix;
 
-public class DynamicSimCalculator {
+public class SimCalculator {
 
 	private HashMap<String, Double> score;
 	private HashMap<String, Double> coeff;
 	//private AdjacencyMatrix matrix;
 	private ArrayList<String> nomi;
-	private DynamicAdjacencyMatrix dynamic; 
+	private AdjacencyMatrix dynamic; 
 	
-	public DynamicSimCalculator() {
+	public SimCalculator() {
 		this.score= new HashMap<String,Double>();
 		this.coeff= new HashMap<String,Double>();
 		this.nomi= new ArrayList<String>();
 		//this.matrix=new AdjacencyMatrix();
-		dynamic=new DynamicAdjacencyMatrix();
+		dynamic=new AdjacencyMatrix();
 	}
 	
 	//converge verso la quinta iterazione

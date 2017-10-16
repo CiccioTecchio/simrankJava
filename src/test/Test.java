@@ -4,11 +4,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
-import calculator.DynamicSimCalculator;
+import calculator.SimCalculator;
 
-public class TestDynamic {
+public class Test {
 	
-	private static DynamicSimCalculator calculator;
+	private static SimCalculator calculator;
 	private static HashMap<String,Double> score;
 	
 	public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class TestDynamic {
 			FileReader file= new FileReader(args[0]);
 			BufferedReader b= new BufferedReader(file);
 			String s=b.readLine();
-			calculator=new DynamicSimCalculator();
+			calculator=new SimCalculator();
 			
 			while(s!=null) {
 				calculator.initStructures(s);
