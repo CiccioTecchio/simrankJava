@@ -81,7 +81,7 @@ public class SimCalculator {
 	}
 
 	
-	public ArrayList<Integer> indexIn(String a){
+	protected ArrayList<Integer> indexIn(String a){
 		ArrayList<Integer> index=new ArrayList<>();
 		
 		int col= nomi.indexOf(a);

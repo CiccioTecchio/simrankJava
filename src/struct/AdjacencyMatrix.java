@@ -31,15 +31,15 @@ public class AdjacencyMatrix {
 		return matrix.containsKey(key);
 	}
 	
-	@Override
-	public String toString() {
+	
+	public String toString(int sizeCol) {
 		String str="";
 		
 		Set entrySet=matrix.entrySet();
 		Iterator it= entrySet.iterator();
 		int i=0;
 		while(it.hasNext()) {
-			if(i==5) {i=0;
+			if(i==sizeCol) {i=0;
 					  str+="\n";}
 			Map.Entry me = (Map.Entry)it.next(); 
 			str+=me.getValue()+"\t";
