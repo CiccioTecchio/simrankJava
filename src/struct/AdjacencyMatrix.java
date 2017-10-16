@@ -34,17 +34,18 @@ public class AdjacencyMatrix {
 	
 	public String toString(int sizeCol) {
 		String str="";
-		
-		Set entrySet=matrix.entrySet();
-		Iterator it= entrySet.iterator();
-		int i=0;
-		while(it.hasNext()) {
-			if(i==sizeCol) {i=0;
-					  str+="\n";}
-			Map.Entry me = (Map.Entry)it.next(); 
-			str+=me.getValue()+"\t";
-			i++;
+		int i,j=0;
+		byte value;
+		for(i=0;i<sizeCol;i++) {
+			if(j==sizeCol)str+="\n";
+			for(j=0;j<sizeCol;j++) {
+				value=this.getElement(i, j);
+				str+="\t"+value+"\t";
+			
+			}
 		}
+		
+		
 		return str;
 		
 		
