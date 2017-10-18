@@ -7,21 +7,21 @@ import java.util.Set;
 
 public class AdjacencyMatrix {
 
-	private HashMap<String,Byte>matrix;
+	private HashMap<String,Integer>matrix;
 	
 	public AdjacencyMatrix() {
-		matrix=new HashMap<String,Byte>();
+		matrix=new HashMap<String,Integer>();
 	}
 	
 
 
-	public void addElement (int r,int c, byte e) {
+	public void addElement (int r,int c, int e) {
 		String key=r+","+c;
 		matrix.put(key, e);
 		
 	}
 	
-	public byte getElement(int r,int c) {
+	public int getElement(int r,int c) {
 		String key=r+","+c;
 		return matrix.get(key);
 	}
@@ -35,7 +35,7 @@ public class AdjacencyMatrix {
 	public String toString(int sizeCol) {
 		String str="";
 		int i,j=0;
-		byte value;
+		int value;
 		for(i=0;i<sizeCol;i++) {
 			if(j==sizeCol)str+="\n";
 			for(j=0;j<sizeCol;j++) {
