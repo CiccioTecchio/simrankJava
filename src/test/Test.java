@@ -55,9 +55,9 @@ public class Test {
 		System.out.println("----------MATRICE DI ADIACENZA----------\n");
 		System.out.println(calculator.getMatrix().toString(sizeCol)+"\n");
 		System.out.println("----------MATRICE DI ADIACENZA----------\n");
-/*		System.out.println("----------SCORE INIZIALI----------\n");
+		System.out.println("----------SCORE INIZIALI----------\n");
 		System.out.println(calculator.getScore().toString(sizeCol)+"\n");
-		System.out.println("----------SCORE INIZIALI----------\n");*/
+		System.out.println("----------SCORE INIZIALI----------\n");
 		System.out.println("----------COEFF----------\n");
 		System.out.println(calculator.getCoeff().toString(sizeCol)+"\n");
 		System.out.println("----------COEFF----------\n");

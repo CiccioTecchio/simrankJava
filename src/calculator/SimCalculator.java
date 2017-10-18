@@ -8,7 +8,6 @@ import java.util.Set;
 
 
 import struct.AdjacencyMatrix;
-import struct.Score;
 import struct.ScoreTable;
 
 public class SimCalculator {
@@ -30,12 +29,10 @@ public class SimCalculator {
 	public ScoreTable simScore(int iteration){
 		int i,j,inA,inB,it=0;
 		String key,a,b;
-		ScoreTable app;
+		HashMap<String,Double> app;
 		String[] pair =new String [2];
 		ArrayList<Integer>indicesA,indicesB;
 		double simScore=0;
-		Score s;
-		double k;
 		double sumScore=0;
 		//app mappa di appoggio che contiene gli score calcolati all'iterazione precedente
 		
@@ -55,10 +52,14 @@ public class SimCalculator {
 				a=pair[0];
 				b=pair[1];
 <<<<<<< HEAD
+<<<<<<< HEAD
 				/*if(coeff.get(key)==Double.POSITIVE_INFINITY){coeff.replace(key, 1.000);
+=======
+				if(coeff.get(key)==Double.POSITIVE_INFINITY){coeff.replace(key, 1.000);
+>>>>>>> parent of 2d05879... prova fix divisione by 0
 															 score.put(key,0.000);}
-				*/
 				
+<<<<<<< HEAD
 				if(a.equals(b)) {
 					s=new Score(1.0,true);
 					score.put(key,s);
@@ -66,36 +67,31 @@ public class SimCalculator {
 =======
 				if(a.equals(b)) score.put(key, 1.0);
 >>>>>>> parent of e7dc2e3... fixato bug division by 0, aggiunto example.txt per testare il bug della divisione per 0
+=======
+				if(a.equals(b)) score.put(key, 1.0);
+>>>>>>> parent of 2d05879... prova fix divisione by 0
 				
 				else {
 					indicesA=indexIn(a);
 					indicesB=indexIn(b);
-					if(indicesA.size() == 0 || indicesB.size() == 0) {
-						s=new Score(0.0,true);
-						score.put(key,s);
-					}
-					
-					else {
 					inA=indicesA.size();
 					inB=indicesB.size();
 				
 				for(i=0;i<inA;i++) {
 					for(j=0;j<inB;j++) {
-						s=app.get(nomi.get(indicesA.get(i))+","+nomi.get(indicesB.get(j)));
-						//sumScore+=app.get(nomi.get(indicesA.get(i))+","+nomi.get(indicesB.get(j)));
-					sumScore+=s.getScore();
+						sumScore+=app.get(nomi.get(indicesA.get(i))+","+nomi.get(indicesB.get(j)));
+					
 					}
 				}
-				k=coeff.get(key).getScore();
-				simScore=k*sumScore;
-				s=new Score(simScore);
-				score.put(key, s);
-				score.put(b+","+a, s);
+				simScore=coeff.get(key)*sumScore;
+				score.put(key, simScore);
+				score.put(b+","+a, simScore);
 				simScore=0;
 				sumScore=0;
 				}//fine else
-				}//else esterno
+				
 			}//fine iterator map
+				
 			it++;
 		}
 		
@@ -128,7 +124,7 @@ public class SimCalculator {
 		int size=nomi.size();
 		for(i=0;i<size;i++) {
 			for(j=0;j<size;j++) {
-				if(!matrix.containsIndex(i, j)) matrix.addElement(i, j,0);
+				if(!matrix.containsIndex(i, j)) matrix.addElement(i, j,(byte) 0);
 			}
 		}
 	}
@@ -147,29 +143,21 @@ public class SimCalculator {
 		int size=nomi.size();
 		int i,j,inA,inB;
 		double coef;
-		String strI,strJ,key;
-		Score s,put;
+		String strI,strJ;
+		
 		for(i=0;i<size;i++) {
 			for(j=0;j<size;j++) {
 				strI=nomi.get(i);
 				strJ=nomi.get(j);
 				if(!score.containsKey(strI+","+strJ)) {
-					 key=strI+","+strJ;
-					 s=new Score(assignValue(strI,strJ));
-				//score.put(key,s);
+				score.put(strI+","+strJ, assignValue(strI, strJ));
 				inA=checkIngresso(strI);
 				inB=checkIngresso(strJ);
-				if(inA==0||inB==0) {
-					s=new Score(0.0,true);
-					score.put(key, s);
-				}
 				coef=c/(inA*inB);
-				put=new Score(coef);
-				coeff.put(key, put);
-				score.put(key, s);
-				}
+				coeff.put(strI+","+strJ, coef);
 				}	
-			}	
+			}
+		}	
 	}
 	
 	protected double assignValue(String a,String b) {	
@@ -181,11 +169,15 @@ public class SimCalculator {
 		int i=nomi.indexOf(app[0]);
 		int j=nomi.indexOf(app[1]);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		matrix.addElement(i, j,1);
 =======
 		System.out.println(i+","+j);
 		matrix.addElement(i, j, (byte)1);
 >>>>>>> parent of e7dc2e3... fixato bug division by 0, aggiunto example.txt per testare il bug della divisione per 0
+=======
+		matrix.addElement(i, j, (byte)1);
+>>>>>>> parent of 2d05879... prova fix divisione by 0
 	}
 	
 	protected String[] singleNode(String s) {
