@@ -51,41 +51,28 @@ public class SimCalculator {
 				
 				a=pair[0];
 				b=pair[1];
-<<<<<<< HEAD
-<<<<<<< HEAD
-				/*if(coeff.get(key)==Double.POSITIVE_INFINITY){coeff.replace(key, 1.000);
-=======
-				if(coeff.get(key)==Double.POSITIVE_INFINITY){coeff.replace(key, 1.000);
->>>>>>> parent of 2d05879... prova fix divisione by 0
-															 score.put(key,0.000);}
 				
-<<<<<<< HEAD
-				if(a.equals(b)) {
-					s=new Score(1.0,true);
-					score.put(key,s);
-				}
-=======
 				if(a.equals(b)) score.put(key, 1.0);
->>>>>>> parent of e7dc2e3... fixato bug division by 0, aggiunto example.txt per testare il bug della divisione per 0
-=======
-				if(a.equals(b)) score.put(key, 1.0);
->>>>>>> parent of 2d05879... prova fix divisione by 0
 				
 				else {
 					indicesA=indexIn(a);
 					indicesB=indexIn(b);
 					inA=indicesA.size();
 					inB=indicesB.size();
-				
+				if(inA==0 || inB==0) {
+					score.put(key, 0.000);
+				}else {
 				for(i=0;i<inA;i++) {
 					for(j=0;j<inB;j++) {
 						sumScore+=app.get(nomi.get(indicesA.get(i))+","+nomi.get(indicesB.get(j)));
 					
 					}
 				}
+				
 				simScore=coeff.get(key)*sumScore;
 				score.put(key, simScore);
 				score.put(b+","+a, simScore);
+				}
 				simScore=0;
 				sumScore=0;
 				}//fine else
@@ -168,16 +155,7 @@ public class SimCalculator {
 		String[]app= singleNode(s); 
 		int i=nomi.indexOf(app[0]);
 		int j=nomi.indexOf(app[1]);
-<<<<<<< HEAD
-<<<<<<< HEAD
-		matrix.addElement(i, j,1);
-=======
-		System.out.println(i+","+j);
 		matrix.addElement(i, j, (byte)1);
->>>>>>> parent of e7dc2e3... fixato bug division by 0, aggiunto example.txt per testare il bug della divisione per 0
-=======
-		matrix.addElement(i, j, (byte)1);
->>>>>>> parent of 2d05879... prova fix divisione by 0
 	}
 	
 	protected String[] singleNode(String s) {

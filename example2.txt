@@ -1,0 +1,9 @@
+Rettore,PresideA
+Rettore,PresideB
+Rettore,PresideC
+PresideA,ProfA
+PresideA,ProfB
+PresideB,ProfC
+PresideB,ProfD
+PresideC,ProfC
+PresideC,ProfD

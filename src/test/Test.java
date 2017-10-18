@@ -39,8 +39,7 @@ public class Test {
 			System.out.println("----------SCORE FINALI----------\n");
 			System.out.println(calculator.getScore().toString(size)+"\n");
 			System.out.println("----------SCORE FINALI----------\n");
-			
-			
+		
 		}catch(IOException e) {e.getMessage();
 							  e.printStackTrace();}
 		catch(RuntimeException e) {e.getMessage();
