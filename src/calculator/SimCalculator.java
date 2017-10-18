@@ -54,6 +54,7 @@ public class SimCalculator {
 				
 				a=pair[0];
 				b=pair[1];
+<<<<<<< HEAD
 				/*if(coeff.get(key)==Double.POSITIVE_INFINITY){coeff.replace(key, 1.000);
 															 score.put(key,0.000);}
 				*/
@@ -62,6 +63,9 @@ public class SimCalculator {
 					s=new Score(1.0,true);
 					score.put(key,s);
 				}
+=======
+				if(a.equals(b)) score.put(key, 1.0);
+>>>>>>> parent of e7dc2e3... fixato bug division by 0, aggiunto example.txt per testare il bug della divisione per 0
 				
 				else {
 					indicesA=indexIn(a);
@@ -176,7 +180,12 @@ public class SimCalculator {
 		String[]app= singleNode(s); 
 		int i=nomi.indexOf(app[0]);
 		int j=nomi.indexOf(app[1]);
+<<<<<<< HEAD
 		matrix.addElement(i, j,1);
+=======
+		System.out.println(i+","+j);
+		matrix.addElement(i, j, (byte)1);
+>>>>>>> parent of e7dc2e3... fixato bug division by 0, aggiunto example.txt per testare il bug della divisione per 0
 	}
 	
 	protected String[] singleNode(String s) {
