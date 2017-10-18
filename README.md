@@ -13,11 +13,11 @@ A simple implementation of the basic simrank algorithm.
 In this project we use 3 arguments from cmd, set this in `Run-> Run Configurations`
 
 1. the name of file containing the data you want to compute, by default is `graph.txt`
-2. the costant `C`, in the Widom, Jeh paper C = 0,8
+2. the costant `C`, which can be thought of either as a confidence level or a decay factor in Widom,Jeh paper `C=0.8`
 3. the number of iteration, we have the same result of Widom,Jeh paper if we set number of iteration= 7
 
 
-#### Run configuration for command line
+#### Run configuration from command line
 
 1. download `simrank.jar`
 2. download `graph.txt` 
