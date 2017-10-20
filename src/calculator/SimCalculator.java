@@ -29,11 +29,11 @@ public class SimCalculator {
 	public ScoreTable simScore(int iteration){
 		int i,j,inA,inB,it=0;
 		String key,a,b;
-		HashMap<String,Double> app;
+		HashMap<String,Float> app;
 		String[] pair =new String [2];
 		ArrayList<Integer>indicesA,indicesB;
-		double simScore=0;
-		double sumScore=0;
+		float simScore=0;
+		float sumScore=0;
 		//app mappa di appoggio che contiene gli score calcolati all'iterazione precedente
 		
 		
@@ -52,7 +52,7 @@ public class SimCalculator {
 				a=pair[0];
 				b=pair[1];
 				
-				if(a.equals(b)) score.put(key, 1.0);
+				if(a.equals(b)) score.put(key, 1.0f);
 				
 				else {
 					indicesA=indexIn(a);
@@ -60,7 +60,7 @@ public class SimCalculator {
 					inA=indicesA.size();
 					inB=indicesB.size();
 				if(inA==0 || inB==0) {
-					score.put(key, 0.000);
+					score.put(key, 0.000f);
 				}else {
 				for(i=0;i<inA;i++) {
 					for(j=0;j<inB;j++) {
@@ -126,10 +126,10 @@ public class SimCalculator {
 		return num;
 	}
 	
-	public void initScore(double c) {
+	public void initScore(float c) {
 		int size=nomi.size();
 		int i,j,inA,inB;
-		double coef;
+		float coef;
 		String strI,strJ;
 		
 		for(i=0;i<size;i++) {
@@ -147,8 +147,8 @@ public class SimCalculator {
 		}	
 	}
 	
-	protected double assignValue(String a,String b) {	
-		if(a.equals(b)) return 1; else return 0;
+	protected float assignValue(String a,String b) {	
+		if(a.equals(b)) return 1f; else return 0f;
 	}
 	
 	protected void initAdjacenzyMatrix(String s) {

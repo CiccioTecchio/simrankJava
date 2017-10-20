@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class ScoreTable extends HashMap<String, Double>{
+public class ScoreTable extends HashMap<String, Float>{
 
 	public ScoreTable() {
 		super();
