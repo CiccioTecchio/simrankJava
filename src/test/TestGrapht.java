@@ -4,13 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import calculator.SimCalculatorGrapht;
+import calculator.SimCalculator;
 import struct.ScoreTable;
 
 public class TestGrapht {
 
 
-	private static SimCalculatorGrapht calculator;
+	private static SimCalculator calculator;
 	private static ScoreTable score;
 	
 	public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class TestGrapht {
 			FileReader file= new FileReader(args[0]);
 			BufferedReader b= new BufferedReader(file);
 			String s=b.readLine();
-			calculator= new SimCalculatorGrapht();
+			calculator= new SimCalculator();
 			
 			while(s!=null) {
 				calculator.initNomi(s);

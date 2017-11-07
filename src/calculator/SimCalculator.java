@@ -12,7 +12,7 @@ import org.jgrapht.graph.DefaultEdge;
 
 import struct.ScoreTable;
 
-public class SimCalculatorGrapht {
+public class SimCalculator {
 
 	private DirectedGraph<String,DefaultEdge> graph;
 	private ArrayList<String> nomi;
@@ -21,7 +21,7 @@ public class SimCalculatorGrapht {
 	private ScoreTable vecchia;
 	private int size;
 	
-	public SimCalculatorGrapht() {
+	public SimCalculator() {
 		graph= new DefaultDirectedGraph<>(DefaultEdge.class);
 		nomi=new ArrayList<>();
 		coeff=new ScoreTable();
