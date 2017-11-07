@@ -171,9 +171,10 @@ public class SimCalculator {
 		if(!nomi.contains(nodes[0])) {
 			nomi.add(nodes[0]);
 		}
-		
+		else {
 		if(!nomi.contains(nodes[1])) {
 			nomi.add(nodes[1]);
+		}
 		}
 	}
 	
